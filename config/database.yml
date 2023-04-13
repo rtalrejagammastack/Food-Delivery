@@ -29,8 +29,10 @@ development:
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user running Rails.
-  username: <%= Rails.application.credentials.dig(:development, :database, :user_name) %>
-  password: <%= Rails.application.credentials.dig(:development, :database, :password) %>
+  # username: <%= Rails.application.credentials.dig(:development, :database, :user_name) %>
+  # password: <%= Rails.application.credentials.dig(:development, :database, :password) %>
+  username: rohit
+  password: 1234
   host: <%= Rails.application.credentials.dig(:development, :database, :host) %>
   port: <%= Rails.application.credentials.dig(:development, :database, :port) %>
 
@@ -58,8 +60,10 @@ development:
 test:
   <<: *default
   database: app_test
-  username: <%= Rails.application.credentials.dig(:test, :database, :user_name) %>
-  password: <%= Rails.application.credentials.dig(:test, :database, :password) %>
+  # username: <%= Rails.application.credentials.dig(:test, :database, :user_name) %>
+  # password: <%= Rails.application.credentials.dig(:test, :database, :password) %>
+  username: rohit
+  password: 1234
   host: <%= Rails.application.credentials.dig(:test, :database, :host) %>
   port: <%= Rails.application.credentials.dig(:test, :database, :port) %>
 
