@@ -1,0 +1,29 @@
+<div class='col-lg-12'>
+    <div class="card rounded-0 mt-5 mb-5">
+        <div class='card-body'>
+            <h2 class='text-center'>address Details</h2>
+            <div class="row">
+                <div class="col-lg-6 bg-light">
+                    <h3>Personal Information</h3>
+                    <p class='load'><strong>Name: </strong><%= @address.name %></p>
+                    <p class='load'><strong>Email: </strong><%= @address.email %></p>
+                </div>
+                <div class="col-lg-6 bg-light">
+                    <h3>Address Information</h3>                    
+                    <p class='load'><strong>City: </strong><%= @address.city %></p>
+                    <p class='load'><strong>State: </strong><%= @address.state %></p>
+                    <p class='load'><strong>Country: </strong><%= @address.country %></p>
+                    <p class='load'><strong>Pincode: </strong><%= @address.pincode %></p>
+                    <p class='load'><strong>Address Line 1: </strong><%= @address.address_line_1 %></p>
+                    <%# <p class='load'><strong>Address Line 2: </strong>= @address.address_line_2.present? ? @address.address_line_2 : 'NA'</p> %>
+
+                </div>
+
+                
+            <%= link_to 'Back to addresss', addresses_path, class:'btn btn-outline-primary btn-lg rounded-0'%>
+            <%= link_to 'Edit addresss', edit_address_path(@address), class:'btn btn-primary btn-lg rounded-0'%>
+
+        </div>
+    </div>
+
+</div> 

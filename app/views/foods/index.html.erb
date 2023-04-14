@@ -1,0 +1,23 @@
+<div class="row full-height">
+<%=render partial:'layouts/category', locals: { categories:@categories, restaurant:@restaurant } %>
+ <div class="col s9 full-height scroll-bar">
+   <div class="panel header-panel flow-text z-depth-3"><%= (!@category.nil?) ? @category.title : "All cuisines"  %></div>
+  <div class="row row-cols-1 row-cols-md-4 g-4"> <% @foods = (!@category.nil?) ? @categories.foods : @foods  %>
+  <% @foods.each do |food| %>
+      <div class="col" style="width:17;">
+        <div class="card" >
+          <% if food.image.attached? %>
+            <%= image_tag food.image, class:"card-img-top", height:"200" %>
+          <% end %>
+          <div class="card-body text-center" style="line-height:0.5;">
+            <h5 class="card-title"><%= food.name %></h5>
+            <p><%= food.price%></p>
+            <p><%= food.description%></p>
+            <div class="right"><i class="material-icons left no-right-margin">shopping_order</i></div> 
+          </div>
+            <%= button_to "Add to Cart", carts_path(food_id: food.id), method: :post, class: "btn btn-primary", style: "width:100%"%>
+        </div>
+      </div>
+  <% end %>
+ </div>
+</div>

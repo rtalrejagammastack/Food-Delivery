@@ -2,7 +2,7 @@ ActiveAdmin.register Restaurant do
 
   # has_many :admin_users
   
-  scope_to :current_admin_user
+  # scope_to :current_admin_user
 
   # controller do 
   #   def current_admin_user

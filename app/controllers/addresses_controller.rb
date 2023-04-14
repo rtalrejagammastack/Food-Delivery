@@ -36,8 +36,8 @@ class AddressesController < ApplicationController
   end
 
   def set_default
-    address = Address.find(params[:id])
     current_user.addresses.update_all(default: false)
+    address = Address.find(params[:id])
     address.update(default: true)
     redirect_to addresses_path, notice: 'Address is now a default address'
   end

@@ -1,0 +1,7 @@
+<% @admin_users.each do |admin_user| %>
+    <div>
+        <h2><%= admin_user.name %></h2>
+        <h2><%= admin_user.email %></h2>
+        <%# <h2>= admin_user.closing_time</h2> %>
+    </div>
+<% end %>

@@ -1,0 +1,13 @@
+<%= form_with(model: @order, url: orders_path) do |form| %>
+  <%= form.label :status %>
+  <%= form.text_field :status %>
+
+  <% form.fields_for :order_items do |oi_form| %>
+    <%= oi_form.label :food_id %>
+    <%= oi_form.select :food_id, Food.all.map { |mi| [mi.name, mi.id] } %>
+    <%= oi_form.label :quantity %>
+    <%= oi_form.number_field :quantity %>
+  <% end %>
+
+  <%= form.submit "Place Order" %>
+<% end %>

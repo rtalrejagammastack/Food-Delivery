@@ -7,10 +7,7 @@ class CartsController < ApplicationController
 
     def create
         @cart = current_user.cart
-        # if @cart.blank?
-        #     @cart = Cart.create(user:current_user)
-        # end
-        # byebug
+      
         food = Food.find(params[:food_id])
         cart_item = @cart.cart_items.where(food: food).first
         if cart_item
@@ -36,6 +33,4 @@ class CartsController < ApplicationController
       redirect_to cart_path
     end
       
-     
-    
 end

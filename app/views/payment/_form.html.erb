@@ -1,0 +1,7 @@
+<%= simple_form_for [@order.restaurant, @order, @payment] do |f| %>
+  <%= f.input :card_number, label: 'Card number' %>
+  <%= f.input :expiration_month, label: 'Expiration month' %>
+  <%= f.input :expiration_year, label: 'Expiration year' %>
+  <%= f.input :cvc, label: 'CVC' %>
+  <%= f.submit 'Pay', class: 'btn btn-primary' %>
+<% end %>

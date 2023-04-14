@@ -1,0 +1,53 @@
+<div class='col-lg-12'>
+    <%= flash[:notice]%>
+    <div class="card rounded-0 mt-5 mb-5">
+        <div class='card-body'>
+            <h2 class='text-center'>Listing addresss</h2>
+        </div>
+    </div>
+    <%= link_to 'Create New address', new_address_path, class:'btn btn-primary btn-lg mb-4 rounded-0' %>
+   
+    <div class="accordion" id="accordionExample">
+        <% @addresses.each do |address| %>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading_<%= address.id%>">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_<%= address.id %>" aria-expanded="true" aria-controls="collapse_<%= address.id %>">
+            <%= address.name_with_email %>
+            <%= button_to 'Set as Default', set_default_address_path(address), method: :put %>
+        
+            </button>
+            <%#= current_user.set_default_address_id(4) %>
+           
+            </h2>
+            <div id="collapse_<%= address.id %>" class="accordion-collapse" aria-labelledby="heading_<%= address.id %>" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+               
+            <div class="row">
+                <div class="col-lg-6 bg-light">
+                    <h3>Personal Information</h3>
+                    <p class='load'><strong>First Name: </strong><%= address.name %></p>
+                    <%# <p class='load'><strong>Middle Name: </strong>= @address.middle_name.present? ? @address.middle_name : 'NA'</p> %>
+                    <p class='load'><strong>Email: </strong><%= address.email %></p>
+                </div>
+                <div class="col-lg-6 bg-light">
+                    <h3>Address Information</h3>                    
+                    <p class='load'><strong>City: </strong><%= address.city %></p>
+                    <p class='load'><strong>State: </strong><%= address.state %></p>
+                    <p class='load'><strong>Country: </strong><%= address.country %></p>
+                    <p class='load'><strong>Pincode: </strong><%= address.pincode %></p>
+                    <p class='load'><strong>Street: </strong><%= address.street %></p>
+                    <%# <p class='load'><strong>Address Line 2: </strong>= @address.address_line_2.present? ? @address.address_line_2 : 'NA'</p> %>
+
+                </div>
+                <div class='col-lg-12'>
+                    <%= link_to 'Edit', edit_address_path(address), class:'btn btn-primary'%>
+                    <%# <%= link_to 'View', address_path(address), class:'dropdown-item'%> 
+                    <%= link_to 'Delete', address_path(address), class:'btn btn-danger', method: :delete, data: {confirm: "Are you sure to delete this address?"} %>
+                </div>
+            </div>
+            </div>
+        </div>
+        <% end %>
+     
+    </div>
+</div>

@@ -1,0 +1,12 @@
+<% @categories.each do |category| %>
+    <h3><%= category.title %></h3>
+    <% @foods.each do |food| %>
+        <h4><%= food.name %></h4>
+        <ul>
+            <% category.menu_items.where(food: food).each do |items| %>
+            <li><%= items.name %></li>
+            <li><%#= render "food/index" %></li>
+            <% end %>
+        </ul>
+    <% end %>
+<% end %>
