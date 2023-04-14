@@ -108,6 +108,7 @@ GEM
       warden (~> 1.2.3)
     erubi (1.12.0)
     execjs (2.8.1)
+    ffi (1.15.5)
     ffi (1.15.5-x64-mingw32)
     formtastic (4.0.0)
       actionpack (>= 5.2.0)
@@ -172,7 +173,10 @@ GEM
     nio4r (2.5.9)
     nokogiri (1.14.3-x64-mingw32)
       racc (~> 1.4)
+    nokogiri (1.14.3-x86_64-linux)
+      racc (~> 1.4)
     orm_adapter (0.5.0)
+    pg (1.4.6)
     pg (1.4.6-x64-mingw32)
     popper_js (2.11.7)
     public_suffix (5.0.1)
@@ -231,6 +235,8 @@ GEM
     rubyzip (2.3.2)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
+    sassc (2.4.0)
+      ffi (~> 1.9)
     sassc (2.4.0-x64-mingw32)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
@@ -268,7 +274,6 @@ GEM
       tzinfo (>= 1.0.0)
     warden (1.2.9)
       rack (>= 2.0.9)
-    wdm (0.1.1)
     web-console (4.2.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -293,6 +298,7 @@ GEM
 
 PLATFORMS
   x64-mingw32
+  x86_64-linux
 
 DEPENDENCIES
   activeadmin
@@ -315,13 +321,12 @@ DEPENDENCIES
   sidekiq
   turbolinks (~> 5)
   tzinfo-data
-  wdm (>= 0.1.0)
   web-console (>= 4.1.0)
   webdrivers
   webpacker (~> 5.0)
 
 RUBY VERSION
-   ruby 3.0.5p211
+   ruby 3.0.0p0
 
 BUNDLED WITH
    2.4.7
