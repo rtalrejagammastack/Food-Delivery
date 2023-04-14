@@ -37,7 +37,7 @@
         <tr>
           <td ><%= item.food.name %></td>
           <td><%= item.quantity %></td>
-          <td><%= (item.food.price) %></td>
+          <td><%= (item.food.price * item.quantity) %></td>
         </tr>
       <% end %>
       <tr>
@@ -57,7 +57,7 @@
 <h3 class="text-center">Your Details</h3>
 <%= current_user.first_name %> <%= current_user.last_name%><br/>
 <%= current_user.email %><br/>
-<%= current_user.addresses.default.ids %>
+<%= current_user.addresses.default.first.full_address %>
 <br/><br/>
 <%= link_to 'Addresses',addresses_path, class:'link-underline-light"'%>
 <br/><br/>

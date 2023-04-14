@@ -11,7 +11,7 @@ class OrdersController < ApplicationController
 
     def create
 
-      @order = current_user.orders.new(order_params)
+      @order = current_user.orders.(order_params)
         
       current_user.cart.cart_items.each do |cart_item|
         order_item = @order.order_items.build(food: cart_item.food, quantity: cart_item.quantity, price: cart_item.food.price, user_id: current_user.id)
@@ -54,7 +54,7 @@ class OrdersController < ApplicationController
     
     private
         def order_params
-            params.permit(:total_amount) # permit! -> save all
+            params.permit(:total_amount, :status) # permit! -> save all
         end
 
         def set_order

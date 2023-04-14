@@ -39,6 +39,8 @@ group :development, :test do
   gem 'awesome_print'
   gem 'sidekiq'
   gem 'listen'
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
   # gem 'spring'
 end
 
