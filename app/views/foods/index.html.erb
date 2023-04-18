@@ -1,3 +1,43 @@
+<style>
+    /* Google fonts import link */
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+  }
+  body{
+    align-items: center;
+    justify-content: center;
+    background: #343F4F;
+  }
+  .wrapper{
+    /* height: 5px;
+    min-width: 5px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #FFF;
+    border-radius: 12px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+  }
+  .wrapper span{
+    width: 30%;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 30;
+    cursor: pointer;
+    user-select: none;
+  }
+  .wrapper span.num{
+    font-size: 30px;
+    border-right: 2px solid rgba(0,0,0,0.2);
+    border-left: 2px solid rgba(0,0,0,0.2);
+    pointer-events: none;
+  }
+</style>
+
 <div class="row full-height">
 <%=render partial:'layouts/category', locals: { categories:@categories, restaurant:@restaurant } %>
  <div class="col s9 full-height scroll-bar">
@@ -15,9 +55,38 @@
             <p><%= food.description%></p>
             <div class="right"><i class="material-icons left no-right-margin">shopping_order</i></div> 
           </div>
-            <%= button_to "Add to Cart", carts_path(food_id: food.id), method: :post, class: "btn btn-primary", style: "width:100%"%>
+            <%# <body> %>
+              <div class="wrapper">
+                <span class="minus">-</span>
+                <span class="num">01</span>
+                <span class="plus">+</span>
+              </div>
+              
+            <%# </body> %>
+          <%= button_to "Add to Cart", carts_path(food_id: food.id), method: :post, class: "btn btn-primary", style: "width:100%"%>
         </div>
       </div>
   <% end %>
  </div>
 </div>
+
+<script>
+   const plus = document.querySelector(".plus"),
+    minus = document.querySelector(".minus"),
+    num = document.querySelector(".num");
+    let a = 1;
+    plus.addEventListener("click", ()=>{
+      a++;
+      a = (a < 10) ? "0" + a : a;
+      num.innerText = a;
+    });
+
+    minus.addEventListener("click", ()=>{
+      if(a > 1){
+        a--;
+        a = (a < 10) ? "0" + a : a;
+        num.innerText = a;
+      }
+    });
+
+  </script>

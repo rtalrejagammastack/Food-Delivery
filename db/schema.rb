@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_04_14_133434) do
+ActiveRecord::Schema.define(version: 2023_04_17_085550) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,16 +94,15 @@ ActiveRecord::Schema.define(version: 2023_04_14_133434) do
     t.integer "quantity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "order_item_id"
     t.index ["cart_id"], name: "index_cart_items_on_cart_id"
     t.index ["food_id"], name: "index_cart_items_on_food_id"
-    t.index ["order_item_id"], name: "index_cart_items_on_order_item_id"
   end
 
   create_table "carts", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "cart_item_id"
     t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
@@ -152,13 +151,17 @@ ActiveRecord::Schema.define(version: 2023_04_14_133434) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
+    t.bigint "cart_item_id"
+    t.bigint "order_id"
+    t.index ["cart_item_id"], name: "index_order_items_on_cart_item_id"
     t.index ["food_id"], name: "index_order_items_on_food_id"
+    t.index ["order_id"], name: "index_order_items_on_order_id"
     t.index ["user_id"], name: "index_order_items_on_user_id"
   end
 
   create_table "orders", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.integer "status"
+    t.integer "status", default: 0
     t.float "total_amount"
     t.bigint "order_items_id"
     t.datetime "created_at", precision: 6, null: false
@@ -204,12 +207,13 @@ ActiveRecord::Schema.define(version: 2023_04_14_133434) do
   add_foreign_key "addresses", "users"
   add_foreign_key "cart_items", "carts"
   add_foreign_key "cart_items", "foods"
-  add_foreign_key "cart_items", "order_items"
   add_foreign_key "carts", "users"
   add_foreign_key "foods", "categories"
   add_foreign_key "foods", "restaurants"
   add_foreign_key "menu_items", "categories"
   add_foreign_key "menu_items", "foods"
+  add_foreign_key "order_items", "cart_items"
+  add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "users"
   add_foreign_key "orders", "order_items", column: "order_items_id"
   add_foreign_key "orders", "users"

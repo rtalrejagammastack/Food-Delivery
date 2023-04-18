@@ -1,11 +1,16 @@
-<h1>Order Details</h1>
+<p class="border-top border-dark border-2 rounded-pill"></p>
+<h1 class='text-center'>Order Details</h1>
+<p class="border-top border-dark border-2 rounded-pill"></p>
 <h2>Order Id: <%= @order.id %></h2>
-<p><strong>Email: </strong><%= current_user.email %></p>
-<%# <p><strong>Restaurant:</strong> <%=@order.restaurant.name %></p> %>
+<p><strong>Name: </strong><%= current_user.addresses.default.first.name %></p>
+<p><strong>Email: </strong><%= current_user.addresses.default.first.email %></p>
+<%# <p><strong>Restaurant:</strong> <%=@order.restaurant.name</p> %>
 <p><strong>Delivery Address: </strong> <%= current_user.addresses.default.first.full_address %></p>
-<h2>Items:</h2>
+<p class="border-top border-dark border-2 rounded-pill"></p>
+<h2  class='text-center'>Items</h2>
+<p class="border-top border-dark border-2 rounded-pill"></p>
 
- <table class="table table-borderless ">
+ <table class="table">
     <thead >
       <tr>
         <th>Product</th>
@@ -23,7 +28,10 @@
       <% end %>
       <tr>
         <td colspan="2">Total:</td>
+        
         <td><%=(@order.total_amount) %></td>
       </tr>
     </tbody>
 </table>
+<p class="border-top border-dark border-2 rounded-pill"></p>
+<%= link_to 'List All orders',orders_path, class:'link-underline-light"'%>

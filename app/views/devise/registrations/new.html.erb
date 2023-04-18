@@ -1,0 +1,93 @@
+<section class="text-center text-lg-start">
+  <style>
+    .cascading-right {
+      margin-right: -50px;
+    }
+
+    @media (max-width: 991.98px) {
+      .cascading-right {
+        margin-right: 0;
+      }
+    }
+  </style>
+
+  <!-- Jumbotron -->
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |form| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <% if @user.errors.any? %>
+  <ul>
+    <% @user.errors.full_messages.each do |message| %>
+     <div class="alert alert-danger" ><%= message %></div>
+    <% end %>
+  </ul>
+<% end %>
+  <div class="container py-4">
+    <div class="row g-0 align-items-center">
+      <div class="col-lg-6 mb-5 mb-lg-0">
+        <div class="card cascading-right" style="
+            background: hsla(0, 0%, 100%, 0.55);
+            backdrop-filter: blur(30px);
+            ">
+          <div class="card-body p-5 shadow-5 text-center">
+            <h2 class="fw-bold mb-5">Sign up</h2>
+            <form>
+          
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <%= form.label :"First Name", for:"validationCustom01", class:"form-label" %>
+                    <%= form.text_field :first_name, required: true, class:"form-control", id:"validationCustom01"%>
+                  
+                  </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <%= form.label :"Last Name" %>
+                    <%= form.text_field :last_name, required: true, id:"form3Example1", class:"form-control"  %>
+                 
+                  </div>
+                </div>
+              </div>
+
+              <!-- Email input -->
+              <div class="form-outline mb-4">
+                 <%= form.label :email %><br />
+                <%= form.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", id:"exampleInputEmail1"%>
+              
+              </div>
+
+              <!-- Password input -->
+              <div class="form-outline mb-4">
+                 <%= form.label :password %>
+                  <% if @minimum_password_length %>
+                  <em>(<%= @minimum_password_length %> characters minimum)</em>
+                  <% end %><br />
+                  <%= form.password_field :password, autocomplete: "new-password", class:"form-control", id:"exampleInputEmail1" %>
+      
+              </div>
+
+              <div class="form-outline mb-4">
+                <%= form.label :password_confirmation %>
+                <%= form.password_field :password_confirmation, autocomplete: "new-password",  class:"form-control", id:"exampleInputEmail1"  %>
+              </div>
+
+              <%= form.submit "Sign Up", class:"btn btn-primary btn-block mb-4" %><br>
+              
+              <%= render "devise/shared/links" %>
+
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 mb-5 mb-lg-0">
+        <img src="https://i.pinimg.com/550x/bf/26/26/bf2626ec294125c6312bcf12fc6a26f6.jpg" class="w-100 rounded-4 shadow-4"
+          alt="" />
+      </div>
+    </div>
+  </div>
+<% end %>
+
+</section>
+
+

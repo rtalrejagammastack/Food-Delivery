@@ -1,9 +1,9 @@
-<%# <h1>Order #<%= @order_id %></h1> %>
+<h1>Order #<%= @order_id %></h1> 
 
-<%# <ul> %>
-  <%# <% @orders.order_items.each do |item| %> %>
-    <%# <li><%= item.name x <%= item.find_by(cart: @order.cart).quantity = <%= item.price * item.cart_items.find_by(cart: @order.cart).quantity %></li> %> %> %>
-  <%# <% end %> %>
-<%# </ul> %>
+<ul>
+  <% @orders.order_items.each do |item| %>
+    <li><%= item.name%> x <%= item.find_by(cart: @order.cart).quantity %> = <%= item.price * item.cart_items.find_by(cart: @order.cart).quantity %></li>
+  <% end %>
+</ul>
 
-<%# <p>Total: <%= number_to_currency(@order.total_price)</p> %> %>
+<p>Total: <%= number_to_currency(@order.total_price) %> </p>

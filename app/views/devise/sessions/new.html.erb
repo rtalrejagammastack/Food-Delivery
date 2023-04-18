@@ -58,16 +58,12 @@
                 </div>
               </div>
 
-              <div class="col">
-                <!-- Simple link -->
-                <a href="#!">Forgot password?</a>
-              </div>
             </div>
 
             <!-- Submit button -->
             <%# <button type="button" class="btn btn-primary btn-block mb-4">Sign in</button> %>
-            <%= form.submit "Login", class:"btn btn-primary btn-block mb-4" %>
-                <%= link_to "Signup", new_user_registration_path %>
+            <%= form.submit "Login", class:"btn btn-primary btn-block mb-4" %><br>
+            <%= render "devise/shared/links" %>
           </form>
 
         </div>
@@ -76,4 +72,3 @@
 </div>
 <% end %>
 </section>
-<%= render "devise/shared/links" %>

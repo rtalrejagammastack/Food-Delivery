@@ -10,16 +10,17 @@ class OrdersController < ApplicationController
     end
 
     def create
-
-      @order = current_user.orders.(order_params)
-        
+      
+      # byebug  
+      @order = current_user.orders.create(order_params)
+      # @order.save!
       current_user.cart.cart_items.each do |cart_item|
         order_item = @order.order_items.build(food: cart_item.food, quantity: cart_item.quantity, price: cart_item.food.price, user_id: current_user.id)
         order_item.save!
       end
 
       if @order.save!
-        SendConfirmationJob.perform_later(@order, current_user)
+        SendConfirmationJob.perform_now(@order, current_user)
 
         current_user.cart.cart_items.destroy_all
         redirect_to order_path(@order, @order_items), notice: 'order has been created successfully'

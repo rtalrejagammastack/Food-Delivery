@@ -1,5 +1,4 @@
 FactoryBot.define do
-  factory :order do
     factory :order do
       user
       status { :pending }
@@ -16,7 +15,6 @@ FactoryBot.define do
         after(:build) do |order, evaluator|
           evaluator.items_count.times do
             order.cart_items << FactoryBot.build(:cart_item)
-          end
         end
       end
     end

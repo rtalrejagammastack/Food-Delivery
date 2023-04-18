@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   resources :orders
   resources :order_items
 
-  
+   
   resources :carts
   resources :cart_items
 
@@ -34,4 +34,12 @@ Rails.application.routes.draw do
   patch '/cart_items/:id/increment_quantity', to: 'cart_items#increment_quantity', as: 'increment_quantity'
   patch '/cart_items/:id/decrement_quantity', to: 'cart_items#decrement_quantity', as: 'decrement_quantity'
 
+  
+    # resources :cart_items do
+    #   member do
+    #     patch :increase_quantity
+    #     patch :decrease_quantity
+    #   end
+    # end
+  
 end

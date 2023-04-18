@@ -4,7 +4,7 @@ class FoodsController < ApplicationController
 
     def index
         # @foods =Food.all
-        @restaurant = Restaurant.find_by_id(params[:restaurant_id])
+        @restaurant = Restaurant.find(params[:restaurant_id])
         @categories = Category.all
         
         if params[:category]

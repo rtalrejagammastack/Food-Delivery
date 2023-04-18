@@ -22,7 +22,7 @@ RSpec.describe Cart, type: :model do
 
   describe "#total" do
     it "calculates the correct total" do
-      allow(subject).to receive(:subtotal).and_return(35.0)
+      except(subject).to receive(:subtotal).and_return(35.0)
       expect(subject.total).to eq(40.0)
     end
   end

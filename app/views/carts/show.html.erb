@@ -1,4 +1,6 @@
+<p class="border-top border-dark border-2 rounded-pill"></p>
 <h3 class="text-center">Items Added</h3>
+<p class="border-top border-dark border-2 rounded-pill"></p>
 <% @cart_items.each do |cart_item| %><br/>
   <%# <div class="cart-item"> %>
   <div class="row">
@@ -12,24 +14,23 @@
         <button type="button" class="btn btn-outline-primary"><%= cart_item.quantity %></button>
         <%= button_to '+', increment_quantity_path(cart_item), method: :patch, type:"button", class:"btn btn-outline-primary" %>
       </div>
-       <%#= link_to "Delete", cart_item, method: :delete, data: { confirm: "Are you sure you want to remove this item?" }, class: "btn btn-danger" %> 
          <button  class="btn btn-danger" id="<%=cart_item.id%>", onclick="delete_cart_item(this)">Delete</button>
       <br/><br/>
     </div>
     </div>
 <% end %><br/>
  <%= link_to "Add More Item", restaurants_path, class: "btn btn-info" %> 
-
-
+<br><br>
+<p class="border-top border-dark border-2 rounded-pill"></p>
 <h3 class="text-center">Bill Summary</h3>
-
+<p class="border-top border-dark border-2 rounded-pill"></p>
 <% if current_user.cart.cart_items %>
-  <table class="table table-borderless ">
+  <table class="table">
     <thead >
       <tr>
-        <th>Product</th>
-        <th>Quantity</th>
-        <th>Price</th>
+        <th scope="col">Product</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Price</th>
       </tr>
     </thead>
     <tbody>
@@ -53,10 +54,11 @@
 <% else %>
   <p>Your cart is empty.</p>
 <% end %>
-
+<p class="border-top border-dark border-2 rounded-pill"></p>
 <h3 class="text-center">Your Details</h3>
-<%= current_user.first_name %> <%= current_user.last_name%><br/>
-<%= current_user.email %><br/>
+<p class="border-top border-dark border-2 rounded-pill"></p>
+<%= current_user.addresses.default.first.name %><br/>
+<%= current_user.addresses.default.first.email %><br/>
 <%= current_user.addresses.default.first.full_address %>
 <br/><br/>
 <%= link_to 'Addresses',addresses_path, class:'link-underline-light"'%>
